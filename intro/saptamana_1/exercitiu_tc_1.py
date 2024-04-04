@@ -3,6 +3,18 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+# TEST CASE
+
+# DESCRIERE: Verificam ca daca facem o cautare valida se vor returna mai multe rezultate
+
+# PASI:
+# 1. Deschidem browserul si navigam pe pagina principala: https://demo.nopcommerce.com/
+# 2. In search box introducem cuvantul "phone"
+# 3. Facem click pe butonul search
+
+# REZULTAT ASTEPTAT
+# Sunt afisate mai multe produse
+
 driver = webdriver.Chrome()
 
 driver.get("https://demo.nopcommerce.com/")
