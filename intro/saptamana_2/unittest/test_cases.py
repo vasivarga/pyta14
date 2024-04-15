@@ -1,6 +1,5 @@
 import time
 import unittest
-from typing import List
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -35,7 +34,8 @@ class TestDemoSite(unittest.TestCase):
         #Tuplul va fi despachetat deoarece metoda find_element() primeste 2 argumente
         return self.driver.find_element(*locator)
 
-    # Medtoda ajutatoare care cauta si returneaza o lista de WebElemente
+    # Medtoda ajutatoare care cauta TOATE elementele dupa un locator dat,
+    # si le returneaza intr-o lista de WebElemente
     def find_all(self, locator) -> list[WebElement]:
         return self.driver.find_elements(*locator)
 
@@ -47,6 +47,7 @@ class TestDemoSite(unittest.TestCase):
     def type(self, locator, text):
         self.find(locator).send_keys(text)
 
+    # Verificam ca produsul cl mai ieftin are pretul egal cu 100
     def test_product_with_lowest_price(self):
         search_box = self.find(self.INPUT_SEARCH)
         search_box.send_keys("phone")
@@ -70,10 +71,12 @@ class TestDemoSite(unittest.TestCase):
         # assert price_value_list[0] == 100.0
         self.assertEqual(price_value_list[0], 100.0)
 
+    # Verificam ca titlul paginii este corect
     def test_page_title(self):
         # assert self.driver.title == "nopCommerce demo store. Search"
         self.assertEqual(self.driver.title, "nopCommerce demo store", "Error, incorrect page title!")
 
+    # Verificam mesajul de eroare in cazul unui login esuat
     def test_login_with_invalid_credentials(self):
         # self.driver.find_element(*self.LINK_LOGIN).click()
         self.click(self.LINK_LOGIN)
@@ -98,6 +101,8 @@ class TestDemoSite(unittest.TestCase):
         assert url_before_login.lower() in url_after_login.lower(), "Error, unexpected url after click on login button"
         assert expected_error_text == actual_error_text, "Error, unexpected error message"
 
+    # Verificam validarea de pe inputul de email
+    # (daca emailul are un format incorect - adica nu contine @ si .com/.ro/etc, atunci se afiseaza un mesaj de eroare)
     def test_email_field_validation(self):
         self.click(self.LINK_LOGIN)
         self.type(self.INPUT_EMAIL, "pyta14")
