@@ -51,7 +51,6 @@ driver.find_element(By.CSS_SELECTOR, "button.login-button").click()
 url_after_login = driver.current_url
 
 expected_error_text = "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found"
-
 actual_error_text = driver.find_element(By.CSS_SELECTOR, "div.message-error").text
 
 assert url_before_login.lower() in url_after_login.lower(), "Error, unexpected url after click on login button"

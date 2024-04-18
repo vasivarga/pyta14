@@ -31,7 +31,7 @@ class TestAlerts(unittest.TestCase):
 
         alert.accept()
 
-        expected_text = "You successfully clicked an alert"
+        expected_text = "You successfully clicked an alert!!!"
         actual_text = self.find(self.TEXT_RESULT).text
 
         self.assertEqual(expected_text, actual_text, "Unexpected text")
