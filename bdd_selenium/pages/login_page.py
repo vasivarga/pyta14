@@ -29,3 +29,5 @@ class LoginPage(BasePage):
     def verify_error_message_text(self, expected):
         actual = self.find(self.ERROR_MEESAGE).text
         assert expected == actual, "Inavlid text!"
+
+
