@@ -1,7 +1,6 @@
 import unittest
 
 import HtmlTestRunner
-from HtmlTestRunner.result import HtmlTestResult
 
 from saptamana_3.test_suites.js_alerts import TestAlerts
 from saptamana_3.test_suites.libraria_keys import TestKeys

@@ -1,0 +1,124 @@
+1. Design Pattern
+_______________________________________________________________________________________________
+
+    Un design pattern reprezintă o soluție generală la o problemă de proiectare a software-ului.
+Este un concept foarte utilizat în programare și reprezintă o abordare practică pentru a simplifica si rezolva problemele
+comune apărute în timpul dezvoltării aplicațiilor.
+
+    Design pattern-urile oferă o soluție abstractă la o problemă specifică, care poate fi aplicată în diverse contexte
+și domenii. Acestea sunt adesea descrise ca o rețetă pentru rezolvarea problemei și sunt proiectate pentru a
+îmbunătăți modularitatea, flexibilitatea și reutilizarea codului in aplicație.
+
+    De obicei, un design pattern include o descriere a problemei, a soluției și a avantajelor și dezavantajelor acesteia.
+Acestea sunt prezentate într-un format standardizat, astfel încât să poată fi ușor înțelese și aplicate în dezvoltarea
+de software. Există multe tipuri diferite de design pattern-uri, cum ar fi creational patterns (modele de creare),
+structural patterns (modele structurale) și behavioral patterns (modele comportamentale), fiecare adresându-se unui tip
+diferit de problemă de proiectare.
+
+
+2. Page Object Model (POM)
+_______________________________________________________________________________________________
+
+    POM (Page Object Model) este un design pattern folosit în testarea automată a aplicațiilor web, care are ca scop
+separarea logicii de testare de cea a UI.
+Mai simplu spus, ce tine de UI, merge intr-un package/folder, ce tine de teste, merge in altul.
+
+    În cadrul POM, fiecare pagină web este reprezentată printr-o clasă separată, denumită Page Object.
+Această clasă conține toate elementele UI de pe pagina respectivă, împreună cu metodele necesare pentru a interacționa cu acestea.
+
+    De exemplu, dacă există o pagină de autentificare în aplicația web, clasa Page Object corespunzătoare ar putea
+conține elementele de interfață aferente câmpurilor de utilizator și parolă, butonul de autentificare, precum și
+metodele pentru a completa aceste câmpuri și a face clic pe butonul de autentificare.
+
+    Prin separarea elementelor UI și a metodelor asociate acestora în clase separate, codul de testare devine mai ușor
+de întreținut și de reutilizat. De asemenea, schimbările în interfața de utilizator nu necesită modificări la nivelul
+codului de testare, ci doar la nivelul claselor Page Object corespunzătoare.
+
+    POM este o abordare populară în testarea automată, deoarece poate reduce timpul și efortul necesare pentru a scrie 
+și a menține codul de testare.
+
+
+
+3. BDD 
+_______________________________________________________________________________________________
+
+Behaviour Driven Development (BDD) este o metodă de dezvoltare software care se concentrează pe definirea
+comportamentului dorit al unei aplicații înainte de a începe să se scrie codul. În BDD, aceste comportamente sunt
+definite printr-un limbaj comun, ușor de înțeles, care poate fi folosit atât de dezvoltatori, cât și de persoanele din
+afara echipei de dezvoltare.
+
+    BDD se concentrează pe crearea unor specificații de comportament (sau scenarii) care descriu modul în care aplicația
+ar trebui să se comporte într-o varietate de situații diferite. Aceste specificații sunt utilizate pentru a defini
+cerințele aplicației și pentru a asigura că dezvoltarea este orientată spre nevoile utilizatorilor.
+
+    BDD este adesea asociat cu unelte speciale de testare, cum ar fi Cucumber sau SpecFlow, care permit scrierea
+specificațiilor de comportament într-un format ușor de înțeles și ușor de folosit de către non-tehnicieni.
+
+    BDD derivă din TDD(Test Driven Development)
+
+
+5. FEATURE
+_______________________________________________________________________________________________
+
+    Un feature este o funcționalitate specifică a unui produs software sau a unei aplicații. 
+    Feature-urile pot varia de la cele mai simple, cum ar fi afișarea unei imagini sau a unui text, 
+până la cele mai complexe, cum ar fi interacțiunea cu un sistem de bază de date sau generarea de rapoarte complexe.
+ 
+
+5. FEATURES IN SINTAXA GHERKIN
+_______________________________________________________________________________________________
+
+    Gherkin este un limbaj de nivel înalt, ușor de citit și de înțeles, utilizat în Behavior Driven Development (BDD) și
+Test Driven Development (TDD) pentru a descrie comportamentul dorit al unei aplicații. Gherkin utilizează o sintaxă
+simplă și structurată, bazată pe cuvinte cheie, pentru a descrie comportamentul dorit al aplicației într-un format ușor
+de înțeles atât pentru dezvoltatori, cât și pentru non-tehnicieni.
+
+    Sintaxa Gherkin include cuvinte cheie precum "Feature", "Scenario", "Given", "When" și "Then", care sunt folosite pentru
+a descrie diferitele părți ale specificațiilor de comportament. 
+
+"Feature" este folosit pentru a defini o caracteristică a aplicației
+"Scenario" este folosit pentru a descrie un scenariu specific de utilizare
+"Given" este folosit pentru a descrie condițiile inițiale ale scenariului
+"When" este folosit pentru a descrie acțiunea care declanșează scenariul
+"Then" este folosit pentru a descrie comportamentul așteptat în urma acțiunii.
+
+
+        Feature: Shopping cart
+
+        @smoke
+        Scenario: Add product to cart
+            	Given I am on the products page
+		When I add an item to cart
+            	Then The selected product is added to the cart
+            	And I get a success message
+
+        @regression
+        Scenario: Continue shopping
+            Given I have a product in the cart
+            When I click "Continue shopping"
+            Then I am redirected to the products page
+
+        @smoke
+        Scenario: Place order
+            Given I have a product in the cart
+            When I click "Place order"
+            Then I am redirected to the payment page
+
+
+
+
+Vom instala plugin-urile ini si gherkin pentru a ne ușura munca
+File -> Settings -> Plugins -> Marketplace: cautam ini, apoi gherkin si le instalam
+
+Instalam selenium pentru functiile din selenium
+    pip install selenium
+
+Vom instala package-urile behave si behave-html-formatter
+    pip install behave
+    pip install behave-html-formatter
+
+
+Exemple de comenzi pentru a rula teste cu tag-uri:
+    behave --tags=smoke
+    behave -f html -o behave-report.html --tags=smoke
+    behave --tags=smoke,regression,etc                       ATENTIE!!! [FARA SPATIU INTRE TAG-URI CAND AVEM MAI MULTE!]
