@@ -10,3 +10,15 @@ Feature: Search
     And There are some results displayed
     # Transformati scenariul in Scenario Outline
     # In felad-ul de cautare introduceti minim 3 nume de produse care returneaza un rezultat
+
+  #REZOLVARE
+  Scenario Outline: Search works properly for any valid product name
+    When I enter "<product>" in the search field
+    And I click the search button
+    Then I am redirected to the search results page
+    And There are some results displayed
+    Examples:
+      | product |
+      | phone   |
+      | book    |
+      | laptop  |

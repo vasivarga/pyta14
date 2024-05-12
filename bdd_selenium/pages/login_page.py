@@ -1,6 +1,4 @@
 from selenium.webdriver.common.by import By
-
-from browser import Browser
 from pages.base_page import BasePage
 
 

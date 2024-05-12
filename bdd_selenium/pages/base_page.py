@@ -1,10 +1,10 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 from browser import Browser
 
 
 class BasePage(Browser):
-
     SEARCH_INPUT = (By.ID, "small-searchterms")
     SEARCH_BUTTON = (By.CLASS_NAME, "search-box-button")
 
@@ -29,5 +29,13 @@ class BasePage(Browser):
     def verify_page_url(self, expected_url):
         assert self.driver.current_url == expected_url, "Error, unexpected page url"
 
+    def verify_page_title(self, expected_title):
+        assert self.driver.title == expected_title, "Error, unexpected page title"
+
+
     def verify_page_url_contains_text(self, text):
         assert text in self.driver.current_url, "Error, text not present in url"
+
+    def select_dropdown_text(self, locator, text):
+        dropdown = Select(self.find(locator))
+        dropdown.select_by_visible_text(text)

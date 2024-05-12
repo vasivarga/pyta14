@@ -8,6 +8,9 @@ Feature: Login
     Then The URL of the page is "https://demo.nopcommerce.com/login"
 
   # Tema: Implementati un test similar pentru verificarea titlului paginii
+  # REZOLVARE
+  Scenario: Check that the title of the page is correct
+    Then The title of the page is "nopCommerce demo store. Login"
 
   @regression
   Scenario Outline: Log in with invalid credentials

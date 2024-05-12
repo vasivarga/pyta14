@@ -27,3 +27,7 @@ def step_impl(context, text):
 @then('The URL of the page is "{url}"')
 def step_impl(context, url):
     context.login_page.verify_page_url(url)
+
+@then('The title of the page is "{title}"')
+def step_impl(context, title):
+    context.login_page.verify_page_title(title)
