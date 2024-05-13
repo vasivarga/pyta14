@@ -24,7 +24,8 @@ Feature: Register
     When I click Register button
     Then Password min length error is displayed
 
-  # Adaugati un test care face un register complet si verifica ca apare mesajul de succes
+  # Adaugati un test care face un register complet si verifica ca apare
+  # mesajul de succes
   # tip: verificati ca exista mesajul
   # verificati textul de pe mesaj
   # Adresa de email se va genera random

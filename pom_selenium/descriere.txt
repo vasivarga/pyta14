@@ -1,0 +1,36 @@
+Urmatoarele librarii sunt necesare:
+
+- selenium
+- pytest
+- pytest-html
+
+# Folderele "pages" si "tests" trebuie sa fie neaparat package-uri
+# Putem crea package-uri direct din pycharm, sau putem adauga un fisier __init__.py in folderul pe care dorim
+# sa-l transformam in package
+
+# Instalam selenium, pytest si pytest-html
+
+# In package-ul "pages" mergem pe design pattern-ul POM (Page Object Model), iar in package-ul "tests" vom scrie testele
+
+# Vom crea un fisier de config numit pytest.ini unde ne definim toate marker-ele dorite, deoarece vrem sa putem rula
+# doar anumite teste la un moment dat
+
+# Adaugam markere la teste dupa urmatorul format: @pytest.mark.<nume_marker>
+# Ex: daca am definit markerele "smoke", "regression" si "sanity", putem folosi markerele:
+ -@pytest.mark.smoke
+ -@pytest.mark.regression
+ -@pytest.mark.sanity
+
+# Putem sa rulam din terminal testele prin intermediul framework-ului pytest cu comanda urmatoare:
+# pytest -m smoke tests/ --html=pytest_report.html
+
+# unde:
+
+# -m specifica ca urmeaza sa precizam markerul testelor
+# smoke este markerul care va fi rulat
+# tests/ este package-ul din care dorim sa rulam toate testele
+# --html=pytest_report.html este outputul pentru raport
+
+# IMPORTANT: numele fisierelor care contin teste trebuie sa aiba sufixul test_ sau prefixul _test
+# altfel nu vor fi luate in considerare de catre pytest
+# Ex: test_register_page.py, register_page_test.py, test_login.py, etc.
