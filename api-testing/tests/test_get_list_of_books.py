@@ -3,7 +3,7 @@ import unittest
 from api_requests.simple_books_api import get_list_of_books
 
 
-class TestGetListOfBooks(unittest.TestCase):
+class TestGetListOfBooks:
 
     def test_get_list_of_books_without_filter(self):
 

@@ -3,7 +3,7 @@ import unittest
 from api_requests.simple_books_api import submit_order
 
 
-class TestSubmitOrder(unittest.TestCase):
+class TestSubmitOrder:
 
     def test_submit_valid_order(self):
         book_id = 1

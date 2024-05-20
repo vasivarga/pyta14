@@ -3,7 +3,7 @@ import unittest
 from api_requests.simple_books_api import get_api_status
 
 
-class TestApiStatus(unittest.TestCase):
+class TestApiStatus:
 
     def test_api_status_code_and_body(self):
         response = get_api_status()

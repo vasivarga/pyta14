@@ -3,7 +3,7 @@ import unittest
 from api_requests.simple_books_api import get_book_by_id
 
 
-class TestGetBookById(unittest.TestCase):
+class TestGetBookById:
 
     def test_get_book_by_valid_id(self):
         response = get_book_by_id(5)
